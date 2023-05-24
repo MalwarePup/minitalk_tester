@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 03:41:45 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/24 09:27:47 by ladloff          ###   ########.fr        #
+#    Updated: 2023/05/24 09:58:00 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,12 @@ FAILURE = 1
 # Timeout
 TIMEOUT_S = 1.0
 
-# Time before the next execution, needed to avoid miss acknowledge singal due
-# too call too fast between client, if your server crash due to non received
-# signal, try to increase
+'''
+Time before the next client execution.
+Needed to avoid missing an acknowledgment signal because the client called too
+fast. If your server crashes because the client didn't get an acknowledgment
+signal, try to increase this value.
+'''
 NEXT_EXEC_TIME_S = 0.2
 
 # Error strings
