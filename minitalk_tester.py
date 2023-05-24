@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 03:41:45 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/24 09:58:00 by ladloff          ###   ########.fr        #
+#    Updated: 2023/05/24 12:08:29 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,13 @@ ESTR_CPATH_NOT_EXIST = colored(
 # Warning strings
 WSTR_BONUS = colored(
     "Warning: Running bonus part on the mandatory server\n",
+    color="yellow",
+    attrs=["bold"]
+)
+
+WSTR_NO_TEST_PID = colored(
+    "Warning: This tester doesn't test about PID == 0 or PID == -1\n to avoid" \
+    " crashing your session. So be certain you have this protection!\n",
     color="yellow",
     attrs=["bold"]
 )
@@ -277,6 +284,7 @@ def main(display_help_flag, test_all, test_mandatory, test_bonus, test_1_flag,
     if display_help_flag:
         click.echo(click.get_current_context().get_help())
         sys.exit(SUCCESS)
+    print(WSTR_NO_TEST_PID)
 
     # Flag to function mapping
     tests = {
