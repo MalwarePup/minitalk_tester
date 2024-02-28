@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 03:41:45 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/24 12:08:29 by ladloff          ###   ########.fr        #
+#    Updated: 2024/02/28 21:39:02 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,22 +115,18 @@ STR_TEST_6 = colored(
     "green"
 )
 
-# Welcome strings
-S_0 = " __  __ ___ _  _ ___ _____ _   _    _  __  _____ ___ ___ _____ ___ ___ "
-S_1 = "|  \/  |_ _| \| |_ _|_   _/_\ | |  | |/ / |_   _| __/ __|_   _| __| _ \\"
-S_2 = "| |\/| || || .` || |  | |/ _ \| |__| ' <    | | | _|\__ \ | | | _||   /"
-S_3 = "|_|  |_|___|_|\_|___| |_/_/ \_\____|_|\_\   |_| |___|___/ |_| |___|_|_\\"
-S_4 = "\t\t\t\t\t\t\t     by ladloff"
+__header__ = r"""
+  __  __ ___ _  _ ___ _____ _   _    _  __  _____ ___ ___ _____ ___ ___
+ |  \/  |_ _| \| |_ _|_   _/_\ | |  | |/ / |_   _| __/ __|_   _| __| _ \
+ | |\/| || || .` || |  | |/ _ \| |__| ' <    | | | _|\__ \ | | | _||   /
+ |_|  |_|___|_|\_|___| |_/_/ \_|____|_|\_\   |_| |___|___/ |_| |___|_|_\
+                                                              by ladloff
+"""
 
-def print_welcome_message():
-    welcome_strings = [S_0, S_1, S_2, S_3, S_4]
+def print_header():
     colors_cycle = cycle(LIST_COLORS)
-    for string in welcome_strings:
-        for character in string:
-            print(colored(character, next(colors_cycle)), end='')
-        print()
-    print("")
-
+    for character in __header__:
+        print(colored(character, next(colors_cycle)), end='')
 
 def get_pid(name, print_error=True):
     for process in psutil.process_iter(['pid', 'name']):
@@ -275,7 +271,7 @@ def test_6(server_pid, path_to_client):
 )
 def main(display_help_flag, test_all, test_mandatory, test_bonus, test_1_flag,
          test_2_flag, test_3_flag, test_4_flag, test_5_flag, test_6_flag):
-    print_welcome_message()
+    print_header()
     if not any([display_help_flag, test_all, test_mandatory, test_bonus,
                 test_1_flag, test_2_flag, test_3_flag, test_4_flag, test_5_flag,
                 test_6_flag]):
